@@ -1,0 +1,28 @@
+body {
+  height: 100vh;
+  width: 100%;
+  background-color: blueviolet;
+}
+
+.fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.game-display {
+  -ms-flex: 0 0 856px;
+  flex: 0 0 856px;
+  background-color: #c4c4c4;
+  border-radius: 10px;
+  height: 500px;
+}
+
+.ans-box {
+  background-color: #c4c4c4;
+  border-radius: 10px;
+  height: 500px;
+}
