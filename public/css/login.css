@@ -43,8 +43,8 @@ h1 {
 
   .help-btn {
     position: fixed;
-    top: 90%;
-    left: 95%;
+    bottom: 20px;
+    right: 20px;
   }
   
   .btn-circle {
