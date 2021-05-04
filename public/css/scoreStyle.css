@@ -5,7 +5,7 @@ body {
     background-color:  blueviolet;
 }
 
-section {
+/* section {
     margin: auto;
     height: 100vh;
     width: 100%;
@@ -13,7 +13,7 @@ section {
     align-items: center;
     display: flex;
     flex-direction: column;
-}
+} */
 
 .container {
     height: 100vh;
@@ -24,7 +24,6 @@ section {
 #main-table {
     padding: 0;
     background: #eee;
-    width: 90%;
     border-radius: 8px;
     box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.1);
     border-collapse: collapse;

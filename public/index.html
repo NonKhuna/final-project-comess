@@ -1,51 +1,47 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>jig-saw</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="css/login.css" />
-    <script src="js/localstorage.js"></script>
-    <script src="js/api.js"></script>
-    <script src="js/script.js"></script>
-    <script>
-      window.onload = function(){
-        localStorage.clear();
-      };
-    </script>
-  </head>
-  <body class="text-center" id="login-body">
-    <div class="container">
-      <h1 class="display-1 fw-bold font-roboto">Jig-saw!!!</h1>
-      <main class="form-signin">
-        <form>
-          <div>
-            <input
-              required
-              type="username"
-              class="form-control text-center"
-              id="inputPin"
-              placeholder="Game PIN"
-              style="height: 48px"
-            />
-          </div>
-          <br />
-        </form>
-        <button class="w-100 btn btn-lg btn-dark" onclick="joinRoom()">
-          Join
-        </button>
-        <hr />
-        <button
-          class="w-100 btn btn-lg btn-outline-secondary"
-          onclick="createRoom()"
-        >
-          Create
-        </button>
-      </main>
-    </div>
-  </body>
+
+<head>
+  <title>jig-saw</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous" />
+  <link rel="stylesheet" href="css/login.css" />
+  <script src="js/localstorage.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/script.js"></script>
+  <script>
+    window.onload = function () {
+      localStorage.clear();
+    };
+  </script>
+</head>
+
+<body class="text-center" id="login-body">
+  <div class="container">
+    <h1 class="display-1 fw-bold font-roboto">Jig-saw!!!</h1>
+    <main class="form-signin">
+      <form action="#" onSubmit="return joinRoom()">
+        <div>
+          <input required type="username" class="form-control text-center" id="inputPin" placeholder="Game PIN"
+            style="height: 48px" />
+        </div>
+        <br />
+      </form>
+      <button class="w-100 btn btn-lg btn-dark" onclick="joinRoom()">
+        Join
+      </button>
+      <hr />
+      <button class="w-100 btn btn-lg btn-outline-secondary" onclick="createRoom()">
+        Create
+      </button>
+    </main>
+  </div>
+  <div class="help-btn">
+    <a href="/doc.pdf" target="_blank" style="text-decoration: none;">
+      <button type="button" class="btn btn-default btn-circle">❔
+    </a>
+    </button>
+  </div>
+</body>
+
 </html>

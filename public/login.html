@@ -17,7 +17,7 @@
     <div class="container">
       <h1 class="display-1 fw-bold font-roboto">Jig-saw!!!</h1>
       <main class="form-signin">
-        <form>
+        <form action="#" onSubmit="return enterRoom()">
           <div>
             <input
               required
@@ -30,10 +30,20 @@
           </div>
           <br />
         </form>
-        <button class="w-100 btn btn-lg btn-dark" onclick="enterRoom()">
+        <button class="w-100 btn btn-lg btn-success" onclick="enterRoom()">
           Enter
         </button>
+        <hr />
+        <a href="/">
+          <button id="btn-back" type="button" class="btn btn-secondary btn-lg" style="max-height: 50px; width: 100%;" >Back to Home</button>
+        </a>
       </main>
+    </div>
+    <div class="help-btn">
+      <a href="/doc.pdf" target="_blank" style="text-decoration: none;">
+        <button type="button" class="btn btn-default btn-circle">❔
+      </a>
+      </button>
     </div>
   </body>
 </html>

@@ -21,6 +21,10 @@ function getAnswer() {
   return localStorage.getItem("answer");
 }
 
+function clearAnswer() {
+  localStorage.removeItem("answer");
+}
+
 function setUserName(n) {
   localStorage.setItem("name", n);
 }

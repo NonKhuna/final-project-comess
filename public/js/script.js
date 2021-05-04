@@ -7,6 +7,10 @@ async function createRoom() {
 
 async function joinRoom() {
   var inputPin = document.getElementById("inputPin").value;
+  if(!inputPin) {
+    alert("Please enter game pin first!");
+    return;
+  }
   const room = await Get(`/room/${inputPin}`);
   if (!room) {
     alert("Room Not Found!");

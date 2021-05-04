@@ -2,13 +2,23 @@ var displayChoice = false;
 $(async function () {
   const room = await Get(`/room/${getRoomId()}`);
   if (room.state == "pre") {
-    if(getHost()) {
+    if (getHost()) {
       showButtonStart();
-    }else showWaitScreen("Wait for game start.");
+    } else showWaitScreen("Wait for game start.");
   } else if (room.state == "start") {
     if (getGameState() == "inGame") {
-      loadChoices();
-      displayChoice = true;
+      if (!displayChoice) {
+        displayChoice = true;
+        loadChoices().then(() => {
+          const ans = getAnswer();
+          if (ans) {
+            $(`#btn-${ans}`).removeClass("btn-light");
+            $(`#btn-${ans}`).addClass("btn-secondary");
+            $(".btn-ans").addClass("disabled");
+          }
+        }
+        )
+      }
     }
   } else if (room.state == "end") {
     $(".btn-ans").addClass("disabled");
@@ -26,7 +36,6 @@ var socket = io(API_HOST, {
 });
 
 socket.on("process", (msg) => {
-  console.log(msg);
   msg = JSON.parse(msg);
   const command = msg[0];
   const timeLeft = msg[1];
@@ -36,12 +45,20 @@ socket.on("process", (msg) => {
     case "prepare":
       setGameState("pre");
       showWaitScreen(timeLeft);
+      clearAnswer();
       break;
     case "start":
       setGameState("inGame");
       if (!displayChoice) {
-        loadChoices();
         displayChoice = true;
+        loadChoices().then(() => {
+          const ans = getAnswer();
+          if (ans) {
+            $(`#btn-${ans}`).removeClass("btn-light");
+            $(`#btn-${ans}`).addClass("btn-secondary");
+            $(".btn-ans").addClass("disabled");
+          }
+        })
       }
       $("#wait-screen").addClass("d-none");
       $("#timeLeft").text(`Time Left : ${timeLeft}`);
@@ -92,7 +109,6 @@ async function loadRightAns() {
   const room = await Get(`/room/${getRoomId()}`);
   const problem = await Get(`/problem/${room.problems[room.nProblem]}/ans`);
   const idx = problem.choices.findIndex((e) => e == problem.answer);
-  console.log(idx);
   $(`#btn-${idx}`).removeClass("btn-light");
   $(`#btn-${idx}`).removeClass("btn-secondary");
   $(`#btn-${idx}`).addClass("btn-success");
@@ -127,6 +143,8 @@ async function onAnswer(e) {
     ans: e.value,
     roomId: getRoomId(),
   });
+  const idx = e.id.charAt(e.id.length - 1);
+  setAnswer(idx);
   e.classList.remove("btn-light");
   e.classList.add("btn-secondary");
   $(".btn-ans").addClass("disabled");
